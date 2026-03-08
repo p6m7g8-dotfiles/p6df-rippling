@@ -17,9 +17,9 @@
 
 ## Summary
 
-p6df module for Rippling: HR and IT platform integration via MCP server
-(`@imazhar101/mcp-rippling-server` via npm) with profile switching
-(`RIPPLING_TOKEN`, `RIPPLING_ROLE`, `RIPPLING_COMPANY`, `RIPPLING_USER_ID`).
+Integrates Rippling HR platform into the p6df shell framework. Provides `profile::on` /
+`profile::off` for managing `RIPPLING_TOKEN`, role, company, and user ID, plus MCP server
+installation.
 
 ## Contributing
 
@@ -40,8 +40,14 @@ p6df module for Rippling: HR and IT platform integration via MCP server
 - `p6df::modules::rippling::deps()`
 - `p6df::modules::rippling::mcp()`
   - Synopsis: Installs Rippling MCP server
-- `p6df::modules::rippling::mcp::env()`
-  - Synopsis: Maps Rippling profile env vars to MCP-specific vars
+- `p6df::modules::rippling::profile::off()`
+- `p6df::modules::rippling::profile::on(profile, env_or_token, [role=admin], [company=], [user_id=])`
+  - Args:
+    - profile
+    - env_or_token
+    - OPTIONAL role - [admin]
+    - OPTIONAL company - []
+    - OPTIONAL user_id - []
 
 ## Hierarchy
 
