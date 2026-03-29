@@ -51,9 +51,27 @@ p6df::modules::rippling::profile::on() {
   local profile="$1"
   local code="$2"
 
+  # Unset prior profile env vars before running new code so stale values
+  # from a previous profile cannot leak into the new one.
+  unset RIPPLING_TOKEN RIPPLING_ROLE RIPPLING_COMPANY RIPPLING_USER_ID
+
   p6_run_code "$code"
 
   p6_env_export "P6_DFZ_PROFILE_RIPPLING" "$profile"
+  p6_env_export "RIPPLING_TOKEN"          "${RIPPLING_TOKEN:-}"
+  p6_env_export "RIPPLING_ROLE"           "${RIPPLING_ROLE:-admin}"
+
+  if p6_string_blank_NOT "${RIPPLING_COMPANY:-}"; then
+    p6_env_export "RIPPLING_COMPANY" "$RIPPLING_COMPANY"
+  else
+    p6_env_export_un RIPPLING_COMPANY
+  fi
+
+  if p6_string_blank_NOT "${RIPPLING_USER_ID:-}"; then
+    p6_env_export "RIPPLING_USER_ID" "$RIPPLING_USER_ID"
+  else
+    p6_env_export_un RIPPLING_USER_ID
+  fi
 
   p6_return_void
 }
