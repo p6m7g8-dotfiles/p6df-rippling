@@ -38,60 +38,15 @@ p6df::modules::rippling::mcp() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::rippling::profile::on(profile, code)
+# Function: words rippling $RIPPLING_COMPANY = p6df::modules::rippling::profile::mod()
 #
-#  Args:
-#	profile -
-#	code - shell code exporting RIPPLING_TOKEN RIPPLING_ROLE RIPPLING_COMPANY RIPPLING_USER_ID
+#  Returns:
+#	words - rippling $RIPPLING_COMPANY
 #
-#  Environment:	 P6_DFZ_PROFILE_RIPPLING RIPPLING_COMPANY RIPPLING_ROLE RIPPLING_TOKEN RIPPLING_USER_ID
+#  Environment:	 RIPPLING_COMPANY
 #>
 ######################################################################
-p6df::modules::rippling::profile::on() {
-  local profile="$1"
-  local code="$2"
+p6df::modules::rippling::profile::mod() {
 
-  # Unset prior profile env vars before running new code so stale values
-  # from a previous profile cannot leak into the new one.
-  unset RIPPLING_TOKEN RIPPLING_ROLE RIPPLING_COMPANY RIPPLING_USER_ID
-
-  p6_run_code "$code"
-
-  p6_env_export "P6_DFZ_PROFILE_RIPPLING" "$profile"
-  p6_env_export "RIPPLING_TOKEN"          "${RIPPLING_TOKEN:-}"
-  p6_env_export "RIPPLING_ROLE"           "${RIPPLING_ROLE:-admin}"
-
-  if p6_string_blank_NOT "${RIPPLING_COMPANY:-}"; then
-    p6_env_export "RIPPLING_COMPANY" "$RIPPLING_COMPANY"
-  else
-    p6_env_export_un RIPPLING_COMPANY
-  fi
-
-  if p6_string_blank_NOT "${RIPPLING_USER_ID:-}"; then
-    p6_env_export "RIPPLING_USER_ID" "$RIPPLING_USER_ID"
-  else
-    p6_env_export_un RIPPLING_USER_ID
-  fi
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::rippling::profile::off(code)
-#
-#  Args:
-#	code - shell code block previously passed to profile::on
-#
-#  Environment:	 P6_DFZ_PROFILE_RIPPLING RIPPLING_COMPANY RIPPLING_ROLE RIPPLING_TOKEN RIPPLING_USER_ID
-#>
-######################################################################
-p6df::modules::rippling::profile::off() {
-  local code="$1"
-
-  p6_env_unset_from_code "$code"
-  p6_env_export_un P6_DFZ_PROFILE_RIPPLING
-
-  p6_return_void
+  p6_return_words 'rippling' "$"
 }
