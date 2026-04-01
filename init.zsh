@@ -48,5 +48,5 @@ p6df::modules::rippling::mcp() {
 ######################################################################
 p6df::modules::rippling::profile::mod() {
 
-  p6_return_words 'rippling' '$RIPPLING_COMPANY'
+  p6_return_words 'rippling' "$"
 }
