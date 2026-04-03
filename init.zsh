@@ -8,7 +8,6 @@
 ######################################################################
 p6df::modules::rippling::deps() {
 
-  # shellcheck disable=2034
   ModuleDeps=(
     p6m7g8-dotfiles/p6df-claude
     p6m7g8-dotfiles/p61password
@@ -48,5 +47,5 @@ p6df::modules::rippling::mcp() {
 ######################################################################
 p6df::modules::rippling::profile::mod() {
 
-  p6_return_words 'rippling' "$"
+  p6_return_words 'rippling' '$RIPPLING_API_KEY'
 }
