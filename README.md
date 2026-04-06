@@ -17,9 +17,7 @@
 
 ## Summary
 
-Integrates Rippling HR platform into the p6df shell framework. Provides `profile::on` /
-`profile::off` for managing `RIPPLING_TOKEN`, role, company, and user ID, plus MCP server
-installation.
+TODO: Add a short summary of this module.
 
 ## Contributing
 
@@ -39,15 +37,8 @@ installation.
 
 - `p6df::modules::rippling::deps()`
 - `p6df::modules::rippling::mcp()`
-  - Synopsis: Installs Rippling MCP server
-- `p6df::modules::rippling::profile::off()`
-- `p6df::modules::rippling::profile::on(profile, env_or_token, [role=admin], [company=], [user_id=])`
-  - Args:
-    - profile
-    - env_or_token
-    - OPTIONAL role - [admin]
-    - OPTIONAL company - []
-    - OPTIONAL user_id - []
+  - Synopsis: Installs and configures Rippling MCP server
+- `words rippling = p6df::modules::rippling::profile::mod()`
 
 ## Hierarchy
 

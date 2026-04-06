@@ -37,12 +37,12 @@ p6df::modules::rippling::mcp() {
 ######################################################################
 #<
 #
-# Function: words rippling $RIPPLING_COMPANY = p6df::modules::rippling::profile::mod()
+# Function: words rippling = p6df::modules::rippling::profile::mod()
 #
 #  Returns:
-#	words - rippling $RIPPLING_COMPANY
+#	words - rippling
 #
-#  Environment:	 RIPPLING_COMPANY
+#  Environment:	 RIPPLING_API_KEY
 #>
 ######################################################################
 p6df::modules::rippling::profile::mod() {
